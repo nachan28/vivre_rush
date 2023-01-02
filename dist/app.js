@@ -21,7 +21,7 @@ const categories = {
     身長が: ["高い", "低い", "近い 2", "遠い 2"],
     初登場話が: ["早い", "遅い", "近い 2", "遠い 2", `${getRandomNumber(1, latestEpisode)}話に近い`],
 };
-let currentCategory = getRandomCondition(Object.keys(categories));
-let subject = currentCategory + " " + getRandomCondition(categories[currentCategory]) + " " + "キャラクターは？";
+const currentCategory = getRandomCondition(Object.keys(categories));
+const subject = currentCategory + " " + getRandomCondition(categories[currentCategory]) + " " + "キャラクターは？";
 console.log(subject);
 //# sourceMappingURL=app.js.map

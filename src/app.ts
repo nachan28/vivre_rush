@@ -31,6 +31,7 @@ const categories = {
 
 }
 
-let currentCategory = getRandomCondition(Object.keys(categories));
-let subject = currentCategory + " " + getRandomCondition(categories[currentCategory as keyof typeof categories]) + " " + "キャラクターは？";
+const currentCategory = getRandomCondition(Object.keys(categories));
+const subject = currentCategory + " " + getRandomCondition(categories[currentCategory as keyof typeof categories]) + " " + "キャラクターは？";
 console.log(subject);
+

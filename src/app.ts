@@ -10,21 +10,16 @@ const categories = {
     初登場話が: ["早い", "遅い", "近い 2", "遠い 2", `${getRandomNumber(1, latestEpisode)}話に近い`],
 }
 
-// 半開区間の範囲を指定してランダムな整数を返す。（1, 6)なら1から5までの数字をランダムに返す
+// 半開区間を指定してランダムな整数を返す。（1, 6)なら1から5までの数字をランダムに返す
 function getRandomNumber(start: number, end: number) {
     return Math.floor(Math.random() * (end - start) + start);
 }
 
-// 配列を渡すとランダムな配列の要素を返す
+// 配列もしくは文字列を渡すとランダムな配列の要素もしくは文字列を返す
 function getRandomIdxElement(iterator: string[] | string) {
     const idx = getRandomNumber(0, iterator.length);
     return iterator[idx];
 }
-
-
-// const currentCategory = getRandomCondition(Object.keys(categories));
-// const subject = currentCategory + " " + getRandomCondition(categories[currentCategory as keyof typeof categories]) + " " + "キャラクターは？";
-// console.log(subject);
 
 // ボタンを作る
 const button = document.createElement("button");
@@ -38,7 +33,7 @@ window.onload = () => {
 }
 
 
-
+// ボタンにイベントリスナをつける
 button.addEventListener("click", () => {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);

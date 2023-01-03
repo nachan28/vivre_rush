@@ -31,7 +31,29 @@ const categories = {
 
 }
 
-const currentCategory = getRandomCondition(Object.keys(categories));
-const subject = currentCategory + " " + getRandomCondition(categories[currentCategory as keyof typeof categories]) + " " + "キャラクターは？";
-console.log(subject);
+// const currentCategory = getRandomCondition(Object.keys(categories));
+// const subject = currentCategory + " " + getRandomCondition(categories[currentCategory as keyof typeof categories]) + " " + "キャラクターは？";
+// console.log(subject);
+
+// ボタンを作る
+const button = document.createElement("button");
+button.textContent = "お題を生成";
+// リストを作る
+const subjectList = document.createElement("ul");
+// それらを表示
+window.onload = () => {
+    document.body.appendChild(button);
+    document.body.appendChild(subjectList);
+}
+
+
+
+button.addEventListener("click", () => {
+    const currentCategory = getRandomCondition(Object.keys(categories));
+    const subject = document.createElement("li");
+    subject.textContent = currentCategory + " " + getRandomCondition(categories[currentCategory as keyof typeof categories]) + " " + "キャラクターは？";
+    subjectList.appendChild(subject);
+})
+
+
 

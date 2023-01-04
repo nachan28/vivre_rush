@@ -2,8 +2,10 @@
     padding: 20px 10px;
     display: inline-block;
     width: 20%;
-    border: solid 2px;
-    background-color: rgb(2, 200, 147);
+    border: none;
+    border-radius: 5px;
+    background-color: #0C6DFD;
+    color: white;
     font-size: large;
     &:hover {
       transform: scale(1.05, 1.05);

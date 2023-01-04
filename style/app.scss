@@ -2,36 +2,38 @@ body {
   background-color: rgb(195, 240, 237);
   text-align: center;
 
-  & .button {
-    margin-top: 5%;
-    padding: 20px 10px;
-    width: 20%;
-    border: none;
-    border-radius: 5px;
-    background-color: #0c6dfd;
-    color: white;
-    font-size: large;
-    &:hover {
-      transform: scale(1.05, 1.05);
-    }
-  }
-
-  & p {
-    margin: 5% 20%;
-    padding: 30px 0px;
-    border: solid 2px green;
-    font-size: 30px;
-    // font-weight: bold;
-    font-family: Arial;
-  }
-
-  & ul {
-    margin: 0 auto;
-    padding: 20px 0px;
-    list-style-type: none;
-    & li {
+  #main {
+    & .button {
+      margin-top: 5%;
+      padding: 20px 10px;
+      width: 20%;
+      border: none;
+      border-radius: 5px;
+      background-color: #0c6dfd;
+      color: white;
       font-size: large;
+      &:hover {
+        transform: scale(1.05, 1.05);
+      }
+    }
+
+    & p {
+      margin: 5% 20%;
+      padding: 30px 0px;
+      border: solid 2px green;
+      font-size: 30px;
+      // font-weight: bold;
       font-family: Arial;
+    }
+
+    & ul {
+      margin: 0 auto;
+      padding: 20px 0px;
+      list-style-type: none;
+      & li {
+        font-size: large;
+        font-family: Arial;
+      }
     }
   }
 }

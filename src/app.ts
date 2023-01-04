@@ -3,11 +3,14 @@
 const latestEpisode = 1070;
 const syllabary = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
 const categories = {
-    懸賞金が: ["低い", "高い", "近い 2", "遠い 2", "低い 男", "高い 男"],
-    名前が: [`50音順で「${getRandomIdxElement(syllabary)}」に近い`, "長い", "短い"],
+    懸賞金が: ["低い", "高い", "近い 2", "遠い 2", "低い 男", "高い 男", "足して5億になる複数"],
+    名前が: ["」に近い", "長い", "短い"],
     年齢が: ["高い", "低い", "近い 2", "遠い 2"],
     身長が: ["高い", "低い", "近い 2", "遠い 2"],
-    初登場話が: ["早い", "遅い", "近い 2", "遠い 2", `${getRandomNumber(1, latestEpisode)}話に近い`],
+    初登場話が: ["早い", "遅い", "近い 2", "遠い 2", "話に近い"],
+    笑い方が: ["」に近い"],
+    悪魔の実の名前が: ["」に近い"]
+
 }
 
 // 半開区間を指定してランダムな整数を返す。（1, 6)なら1から5までの数字をランダムに返す
@@ -38,7 +41,13 @@ button.addEventListener("click", () => {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
     const subject = document.createElement("li");
-    subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
+    if (currentSubCategory === "話に近い") {
+        subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
+    }else if (currentSubCategory === "」に近い") {
+        subject.textContent = currentCategory + " 50音順で「" + getRandomIdxElement(syllabary) + currentSubCategory + " " + "キャラクターは？";
+    }else{
+        subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
+    }
     subjectList.appendChild(subject);
 })
 

@@ -25,7 +25,7 @@ window.onload = () => {
     document.body.appendChild(button);
     document.body.appendChild(subjectList);
 };
-function addListElement() {
+function addElementToList() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory]);
     const subject = document.createElement("li");
@@ -42,9 +42,9 @@ function addListElement() {
 }
 function keyDownHandler(e) {
     if (e.key === "Enter") {
-        addListElement();
+        addElementToList();
     }
 }
-button.addEventListener("click", addListElement);
+button.addEventListener("click", addElementToList, false);
 document.addEventListener("keydown", keyDownHandler, false);
 //# sourceMappingURL=app.js.map

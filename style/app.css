@@ -1,23 +1,31 @@
-.button {
+body {
+  background-color: rgb(195, 240, 237);
+  text-align: center;
+}
+body .button {
   padding: 20px 10px;
-  display: inline-block;
   width: 20%;
   border: none;
   border-radius: 5px;
-  background-color: #0C6DFD;
+  background-color: #0c6dfd;
   color: white;
   font-size: large;
 }
-.button:hover {
+body .button:hover {
   transform: scale(1.05, 1.05);
 }
-
-body {
-  text-align: center;
-  background-color: rgb(195, 240, 237);
+body p {
+  padding: 30px 0px;
+  border: solid 2px green;
+  font-size: 30px;
+  font-family: Arial;
 }
 body ul {
   margin: 0 auto;
   padding: 20px 0px;
   list-style-type: none;
+}
+body ul li {
+  font-size: large;
+  font-family: Arial;
 }/*# sourceMappingURL=app.css.map */

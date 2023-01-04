@@ -24,23 +24,31 @@ function getRandomIdxElement(iterator: string[] | string) {
     return iterator[idx];
 }
 
+// メインコンテナをとってくる
+const main = document.getElementById("main")!;
 // ボタンを作る
 const button = document.createElement("button");
 button.textContent = "お題を生成";
 button.className = "button";
-// リストを作る
+// お題表示部分を作る
+const subject = document.createElement("p");
+// 過去のお題リストを作る
 const subjectList = document.createElement("ul");
 // それらを表示
 window.onload = () => {
-    document.body.appendChild(button);
-    document.body.appendChild(subjectList);
+    document.body.appendChild(main);
+    main.appendChild(button);
+    main.appendChild(subject);
+    main.appendChild(subjectList);
 }
 
-// ボタンクリックの時に起動する関数。ランダムなお題をテキストとして持つli要素を生成し、ul要素に追加する
+// ボタンクリックの時に起動する関数。ランダムなお題を表示 => 一つ前のお題をテキストとして持つli要素を作ってul要素に追加する
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
-    const subject = document.createElement("li");
+    const prevSubject = subject.textContent;
+
+    // お題表示部分にランダムにお題を表示
     if (currentSubCategory === "話に近い") {
         subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
     }else if (currentSubCategory === "」に近い") {
@@ -48,7 +56,13 @@ function getSubject() {
     }else{
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
-    subjectList.appendChild(subject);
+    
+    // 一つ前のお題が存在するなら過去のお題リストに追加
+    if (prevSubject) {
+        const listElement = document.createElement("li");
+        listElement.textContent = prevSubject;
+        subjectList.appendChild(listElement);
+    }
 }
 
 // エンターキーにボタンクリックと同じ効果をつける

@@ -20,15 +20,17 @@ function getRandomIdxElement(iterator) {
 const button = document.createElement("button");
 button.textContent = "お題を生成";
 button.className = "button";
+const subject = document.createElement("p");
 const subjectList = document.createElement("ul");
 window.onload = () => {
     document.body.appendChild(button);
+    document.body.appendChild(subject);
     document.body.appendChild(subjectList);
 };
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory]);
-    const subject = document.createElement("li");
+    const prevSubject = subject.textContent;
     if (currentSubCategory === "話に近い") {
         subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
     }
@@ -38,7 +40,11 @@ function getSubject() {
     else {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
-    subjectList.appendChild(subject);
+    if (prevSubject) {
+        const listElement = document.createElement("li");
+        listElement.textContent = prevSubject;
+        subjectList.appendChild(listElement);
+    }
 }
 function keyDownHandler(e) {
     if (e.key === "Enter") {

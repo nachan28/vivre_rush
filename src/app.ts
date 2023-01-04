@@ -51,6 +51,7 @@ function addListElement() {
     subjectList.appendChild(subject);
 }
 
+// エンターキーにボタンクリックと同じ効果をつける
 function keyDownHandler(e: KeyboardEvent) {
     if (e.key === "Enter"){
         addListElement();
@@ -59,6 +60,7 @@ function keyDownHandler(e: KeyboardEvent) {
 
 // ボタンにイベントリスナをつける
 button.addEventListener("click", addListElement);
+// キーダウンにもイベントリスナをつける
 document.addEventListener("keydown", keyDownHandler, false);
 
 

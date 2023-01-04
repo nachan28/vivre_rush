@@ -30,6 +30,7 @@ const main = document.getElementById("main")!;
 const button = document.createElement("button");
 button.textContent = "お題を生成";
 button.className = "button";
+button.type = "button";
 // お題表示部分を作る
 const subject = document.createElement("p");
 // 過去のお題リストを作る
@@ -68,7 +69,9 @@ function getSubject() {
 // エンターキーにボタンクリックと同じ効果をつける
 function keyDownHandler(e: KeyboardEvent) {
     if (e.key === "Enter"){
+        e.preventDefault();
         getSubject();
+        console.log(1);
     }
 }
 

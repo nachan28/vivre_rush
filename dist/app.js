@@ -17,15 +17,18 @@ function getRandomIdxElement(iterator) {
     const idx = getRandomNumber(0, iterator.length);
     return iterator[idx];
 }
+const main = document.getElementById("main");
 const button = document.createElement("button");
 button.textContent = "お題を生成";
 button.className = "button";
+button.type = "button";
 const subject = document.createElement("p");
 const subjectList = document.createElement("ul");
 window.onload = () => {
-    document.body.appendChild(button);
-    document.body.appendChild(subject);
-    document.body.appendChild(subjectList);
+    document.body.appendChild(main);
+    main.appendChild(button);
+    main.appendChild(subject);
+    main.appendChild(subjectList);
 };
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
@@ -48,7 +51,9 @@ function getSubject() {
 }
 function keyDownHandler(e) {
     if (e.key === "Enter") {
+        e.preventDefault();
         getSubject();
+        console.log(1);
     }
 }
 button.addEventListener("click", getSubject, false);

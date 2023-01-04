@@ -3,6 +3,7 @@ body {
   text-align: center;
 }
 body .button {
+  margin-top: 5%;
   padding: 20px 10px;
   width: 20%;
   border: none;
@@ -15,6 +16,7 @@ body .button:hover {
   transform: scale(1.05, 1.05);
 }
 body p {
+  margin: 5% 20%;
   padding: 30px 0px;
   border: solid 2px green;
   font-size: 30px;

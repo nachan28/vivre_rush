@@ -37,7 +37,7 @@ window.onload = () => {
 }
 
 // ボタンクリックの時に起動する関数。ランダムなお題をテキストとして持つli要素を生成し、ul要素に追加する
-function addElementToList() {
+function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
     const subject = document.createElement("li");
@@ -54,12 +54,12 @@ function addElementToList() {
 // エンターキーにボタンクリックと同じ効果をつける
 function keyDownHandler(e: KeyboardEvent) {
     if (e.key === "Enter"){
-        addElementToList();
+        getSubject();
     }
 }
 
 // ボタンにイベントリスナをつける
-button.addEventListener("click", addElementToList, false);
+button.addEventListener("click", getSubject, false);
 // キーダウンにもイベントリスナをつける
 document.addEventListener("keydown", keyDownHandler, false);
 

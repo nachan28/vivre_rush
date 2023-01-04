@@ -25,7 +25,7 @@ window.onload = () => {
     document.body.appendChild(button);
     document.body.appendChild(subjectList);
 };
-button.addEventListener("click", () => {
+function addListElement() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory]);
     const subject = document.createElement("li");
@@ -39,5 +39,6 @@ button.addEventListener("click", () => {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
     subjectList.appendChild(subject);
-});
+}
+button.addEventListener("click", addListElement);
 //# sourceMappingURL=app.js.map

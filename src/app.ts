@@ -36,9 +36,8 @@ window.onload = () => {
     document.body.appendChild(subjectList);
 }
 
-
-// ボタンにイベントリスナをつける
-button.addEventListener("click", () => {
+// ボタンクリックの時に起動する関数。ランダムなお題をテキストとして持つli要素を生成し、ul要素に追加する
+function addListElement() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
     const subject = document.createElement("li");
@@ -50,7 +49,10 @@ button.addEventListener("click", () => {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
     subjectList.appendChild(subject);
-})
+}
+
+// ボタンにイベントリスナをつける
+button.addEventListener("click", addListElement);
 
 
 

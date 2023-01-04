@@ -19,6 +19,7 @@ function getRandomIdxElement(iterator) {
 }
 const button = document.createElement("button");
 button.textContent = "お題を生成";
+button.className = "button";
 const subjectList = document.createElement("ul");
 window.onload = () => {
     document.body.appendChild(button);

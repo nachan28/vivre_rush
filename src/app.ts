@@ -27,6 +27,7 @@ function getRandomIdxElement(iterator: string[] | string) {
 // ボタンを作る
 const button = document.createElement("button");
 button.textContent = "お題を生成";
+button.className = "button";
 // リストを作る
 const subjectList = document.createElement("ul");
 // それらを表示

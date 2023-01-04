@@ -40,5 +40,11 @@ function addListElement() {
     }
     subjectList.appendChild(subject);
 }
+function keyDownHandler(e) {
+    if (e.key === "Enter") {
+        addListElement();
+    }
+}
 button.addEventListener("click", addListElement);
+document.addEventListener("keydown", keyDownHandler, false);
 //# sourceMappingURL=app.js.map

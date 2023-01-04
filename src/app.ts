@@ -51,8 +51,16 @@ function addListElement() {
     subjectList.appendChild(subject);
 }
 
+function keyDownHandler(e: KeyboardEvent) {
+    if (e.key === "Enter"){
+        addListElement();
+    }
+}
+
 // ボタンにイベントリスナをつける
 button.addEventListener("click", addListElement);
+document.addEventListener("keydown", keyDownHandler, false);
+
 
 
 

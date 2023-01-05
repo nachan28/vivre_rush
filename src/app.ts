@@ -44,14 +44,11 @@ window.onload = () => {
     main.appendChild(subjectList);
 }
 
-// ボタンクリックの時に起動する関数。ランダムなお題を表示&読み上げ => 一つ前のお題をテキストとして持つli要素を作ってul要素に追加する
+// ランダムなお題を表示
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
-    const prevSubject = subject.textContent;
-    const listElement = document.createElement("li");
-    listElement.className = "elm";
-
+    
     // お題表示部分にランダムにお題を表示
     if (currentSubCategory === "話に近い") {
         subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
@@ -61,12 +58,18 @@ function getSubject() {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
 
-    speak(subject.textContent);
+    return subject.textContent;
+}
 
-    // 一つ前のお題が存在するなら過去のお題リストに追加
+// 一つ前のお題をテキストとして持つli要素を作ってulに追加
+function addElement() {
+    const prevSubject = subject.textContent;
+    const element = document.createElement("li");
+    element.className = "elm";
+
     if (prevSubject) {
-        listElement.textContent = prevSubject;
-        subjectList.insertBefore(listElement, document.querySelector("#main > .subjectList > .elm"));
+        element.textContent = prevSubject;
+        subjectList.insertBefore(element, document.querySelector("#main > .subjectList > .elm"));
     }
 }
 
@@ -78,17 +81,24 @@ function speak(text: string) {
     speechSynthesis.speak(utterance);
 }
 
+// ボタンクリックの時に起動する関数
+function clickHandler() {
+    addElement();
+    const newSubject = getSubject();
+    speak(newSubject);
+}
+
+
 // エンターキーにボタンクリックと同じ効果をつける
 function keyDownHandler(e: KeyboardEvent) {
     if (e.key === "Enter") {
         e.preventDefault();
         getSubject();
-        console.log(1);
     }
 }
 
 // ボタンにイベントリスナをつける
-button.addEventListener("click", getSubject, false);
+button.addEventListener("click", clickHandler, false);
 // キーダウンにもイベントリスナをつける
 document.addEventListener("keydown", keyDownHandler, false);
 

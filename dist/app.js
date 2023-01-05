@@ -34,9 +34,6 @@ window.onload = () => {
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory]);
-    const prevSubject = subject.textContent;
-    const listElement = document.createElement("li");
-    listElement.className = "elm";
     if (currentSubCategory === "話に近い") {
         subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
     }
@@ -46,10 +43,15 @@ function getSubject() {
     else {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
-    speak(subject.textContent);
+    return subject.textContent;
+}
+function addElement() {
+    const prevSubject = subject.textContent;
+    const element = document.createElement("li");
+    element.className = "elm";
     if (prevSubject) {
-        listElement.textContent = prevSubject;
-        subjectList.insertBefore(listElement, document.querySelector("#main > .subjectList > .elm"));
+        element.textContent = prevSubject;
+        subjectList.insertBefore(element, document.querySelector("#main > .subjectList > .elm"));
     }
 }
 function speak(text) {
@@ -58,13 +60,17 @@ function speak(text) {
     utterance.voice = speechSynthesis.getVoices().filter(voice => voice.lang === "ja-JP")[0];
     speechSynthesis.speak(utterance);
 }
+function clickHandler() {
+    addElement();
+    const newSubject = getSubject();
+    speak(newSubject);
+}
 function keyDownHandler(e) {
     if (e.key === "Enter") {
         e.preventDefault();
         getSubject();
-        console.log(1);
     }
 }
-button.addEventListener("click", getSubject, false);
+button.addEventListener("click", clickHandler, false);
 document.addEventListener("keydown", keyDownHandler, false);
 //# sourceMappingURL=app.js.map

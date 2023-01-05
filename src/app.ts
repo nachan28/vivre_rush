@@ -44,7 +44,7 @@ window.onload = () => {
     main.appendChild(subjectList);
 }
 
-// ボタンクリックの時に起動する関数。ランダムなお題を表示 => 一つ前のお題をテキストとして持つli要素を作ってul要素に追加する
+// ボタンクリックの時に起動する関数。ランダムなお題を表示&読み上げ => 一つ前のお題をテキストとして持つli要素を作ってul要素に追加する
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
@@ -55,12 +55,14 @@ function getSubject() {
     // お題表示部分にランダムにお題を表示
     if (currentSubCategory === "話に近い") {
         subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
-    }else if (currentSubCategory === "」に近い") {
+    } else if (currentSubCategory === "」に近い") {
         subject.textContent = currentCategory + " 50音順で「" + getRandomIdxElement(syllabary) + currentSubCategory + " " + "キャラクターは？";
-    }else{
+    } else {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
-    
+
+    speak(subject.textContent);
+
     // 一つ前のお題が存在するなら過去のお題リストに追加
     if (prevSubject) {
         listElement.textContent = prevSubject;
@@ -68,9 +70,17 @@ function getSubject() {
     }
 }
 
+// テキストを読み上げる関数
+function speak(text: string) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ja-JP";
+    utterance.voice = speechSynthesis.getVoices().filter(voice => voice.lang === "ja-JP")[0];
+    speechSynthesis.speak(utterance);
+}
+
 // エンターキーにボタンクリックと同じ効果をつける
 function keyDownHandler(e: KeyboardEvent) {
-    if (e.key === "Enter"){
+    if (e.key === "Enter") {
         e.preventDefault();
         getSubject();
         console.log(1);

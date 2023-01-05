@@ -79,6 +79,7 @@ function speak(text: string) {
     utterance.lang = "ja-JP";
     utterance.voice = speechSynthesis.getVoices().filter(voice => voice.lang === "ja-JP")[0];
     speechSynthesis.speak(utterance);
+    console.log(text);
 }
 
 // ボタンクリックの時に起動する関数
@@ -93,7 +94,7 @@ function clickHandler() {
 function keyDownHandler(e: KeyboardEvent) {
     if (e.key === "Enter") {
         e.preventDefault();
-        getSubject();
+        clickHandler();
     }
 }
 

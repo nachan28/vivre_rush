@@ -59,6 +59,7 @@ function speak(text) {
     utterance.lang = "ja-JP";
     utterance.voice = speechSynthesis.getVoices().filter(voice => voice.lang === "ja-JP")[0];
     speechSynthesis.speak(utterance);
+    console.log(text);
 }
 function clickHandler() {
     addElement();
@@ -68,7 +69,7 @@ function clickHandler() {
 function keyDownHandler(e) {
     if (e.key === "Enter") {
         e.preventDefault();
-        getSubject();
+        clickHandler();
     }
 }
 button.addEventListener("click", clickHandler, false);

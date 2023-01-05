@@ -63,7 +63,6 @@ function getSubject() {
     
     // 一つ前のお題が存在するなら過去のお題リストに追加
     if (prevSubject) {
-        console.log(document.querySelector("#main > .subjectList > .elm"));
         listElement.textContent = prevSubject;
         subjectList.insertBefore(listElement, document.querySelector("#main > .subjectList > .elm"));
     }

@@ -47,7 +47,6 @@ function getSubject() {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
     if (prevSubject) {
-        console.log(document.querySelector("#main > .subjectList > .elm"));
         listElement.textContent = prevSubject;
         subjectList.insertBefore(listElement, document.querySelector("#main > .subjectList > .elm"));
     }

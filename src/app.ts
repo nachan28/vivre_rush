@@ -35,6 +35,7 @@ button.type = "button";
 const subject = document.createElement("p");
 // 過去のお題リストを作る
 const subjectList = document.createElement("ul");
+subjectList.className = "subjectList";
 // それらを表示
 window.onload = () => {
     document.body.appendChild(main);
@@ -48,6 +49,8 @@ function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory as keyof typeof categories]);
     const prevSubject = subject.textContent;
+    const listElement = document.createElement("li");
+    listElement.className = "elm";
 
     // お題表示部分にランダムにお題を表示
     if (currentSubCategory === "話に近い") {
@@ -60,9 +63,9 @@ function getSubject() {
     
     // 一つ前のお題が存在するなら過去のお題リストに追加
     if (prevSubject) {
-        const listElement = document.createElement("li");
+        console.log(document.querySelector("#main > .subjectList > .elm"));
         listElement.textContent = prevSubject;
-        subjectList.appendChild(listElement);
+        subjectList.insertBefore(listElement, document.querySelector("#main > .subjectList > .elm"));
     }
 }
 

@@ -24,6 +24,7 @@ button.className = "button";
 button.type = "button";
 const subject = document.createElement("p");
 const subjectList = document.createElement("ul");
+subjectList.className = "subjectList";
 window.onload = () => {
     document.body.appendChild(main);
     main.appendChild(button);
@@ -34,6 +35,8 @@ function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory]);
     const prevSubject = subject.textContent;
+    const listElement = document.createElement("li");
+    listElement.className = "elm";
     if (currentSubCategory === "話に近い") {
         subject.textContent = currentCategory + " " + getRandomNumber(1, latestEpisode) + currentSubCategory + " " + "キャラクターは？";
     }
@@ -44,9 +47,9 @@ function getSubject() {
         subject.textContent = currentCategory + " " + currentSubCategory + " " + "キャラクターは？";
     }
     if (prevSubject) {
-        const listElement = document.createElement("li");
+        console.log(document.querySelector("#main > .subjectList > .elm"));
         listElement.textContent = prevSubject;
-        subjectList.appendChild(listElement);
+        subjectList.insertBefore(listElement, document.querySelector("#main > .subjectList > .elm"));
     }
 }
 function keyDownHandler(e) {

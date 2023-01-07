@@ -10,6 +10,27 @@ const categories = {
     笑い方が: ["」に近い"],
     悪魔の実の名前が: ["」に近い"]
 };
+const header = document.getElementById("header");
+const title = document.createElement("h1");
+const description = document.createElement("p");
+const main = document.getElementById("main");
+const button = document.createElement("button");
+const subject = document.createElement("p");
+const subjectList = document.createElement("ul");
+button.textContent = "お題を生成";
+button.className = "button";
+button.type = "button";
+subjectList.className = "subjectList";
+title.textContent = "VIVRE RUSH ランダムお題ジェネレータ";
+description.textContent = "1000種類以上のお題でVIVRE RUSHをもっと楽しくプレイしよう！！";
+window.onload = () => {
+    document.body.appendChild(main);
+    header.appendChild(title);
+    header.appendChild(description);
+    main.appendChild(button);
+    main.appendChild(subject);
+    main.appendChild(subjectList);
+};
 function getRandomNumber(start, end) {
     return Math.floor(Math.random() * (end - start) + start);
 }
@@ -17,20 +38,6 @@ function getRandomIdxElement(iterator) {
     const idx = getRandomNumber(0, iterator.length);
     return iterator[idx];
 }
-const main = document.getElementById("main");
-const button = document.createElement("button");
-button.textContent = "お題を生成";
-button.className = "button";
-button.type = "button";
-const subject = document.createElement("p");
-const subjectList = document.createElement("ul");
-subjectList.className = "subjectList";
-window.onload = () => {
-    document.body.appendChild(main);
-    main.appendChild(button);
-    main.appendChild(subject);
-    main.appendChild(subjectList);
-};
 function getSubject() {
     const currentCategory = getRandomIdxElement(Object.keys(categories));
     const currentSubCategory = getRandomIdxElement(categories[currentCategory]);

@@ -12,6 +12,33 @@ const categories = {
     悪魔の実の名前が: ["」に近い"]
 
 }
+const header = document.getElementById("header")!;
+const title = document.createElement("h1");
+const description = document.createElement("p");
+const main = document.getElementById("main")!;
+// ボタンを作る
+const button = document.createElement("button");
+// お題表示部分を作る
+const subject = document.createElement("p");
+// 過去のお題リストを作る
+const subjectList = document.createElement("ul");
+
+button.textContent = "お題を生成";
+button.className = "button";
+button.type = "button";
+subjectList.className = "subjectList";
+title.textContent = "VIVRE RUSH ランダムお題ジェネレータ";
+description.textContent = "1000種類以上のお題でVIVRE RUSHをもっと楽しくプレイしよう！！"
+
+// それらを表示
+window.onload = () => {
+    document.body.appendChild(main);
+    header.appendChild(title);
+    header.appendChild(description);
+    main.appendChild(button);
+    main.appendChild(subject);
+    main.appendChild(subjectList);
+}
 
 // 半開区間を指定してランダムな整数を返す。（1, 6)なら1から5までの数字をランダムに返す
 function getRandomNumber(start: number, end: number) {
@@ -24,25 +51,6 @@ function getRandomIdxElement(iterator: string[] | string) {
     return iterator[idx];
 }
 
-// メインコンテナをとってくる
-const main = document.getElementById("main")!;
-// ボタンを作る
-const button = document.createElement("button");
-button.textContent = "お題を生成";
-button.className = "button";
-button.type = "button";
-// お題表示部分を作る
-const subject = document.createElement("p");
-// 過去のお題リストを作る
-const subjectList = document.createElement("ul");
-subjectList.className = "subjectList";
-// それらを表示
-window.onload = () => {
-    document.body.appendChild(main);
-    main.appendChild(button);
-    main.appendChild(subject);
-    main.appendChild(subjectList);
-}
 
 // ランダムなお題を表示
 function getSubject() {

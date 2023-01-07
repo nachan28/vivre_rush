@@ -1,33 +1,45 @@
 body {
-  background-color: rgb(195, 240, 237);
+  background-color: #AB2930;
   text-align: center;
+  margin: 0;
 }
-body #main .button {
+body header {
+  height: 6em;
+  background-color: #F1F1F5;
+}
+body header h1 {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body main .button {
   margin-top: 5%;
   padding: 20px 10px;
   width: 20%;
   border: none;
   border-radius: 5px;
-  background-color: #0c6dfd;
+  background-color: #393435;
   color: white;
   font-size: large;
 }
-body #main .button:hover {
+body main .button:hover {
   transform: scale(1.05, 1.05);
 }
-body #main p {
+body main p {
   margin: 5% 20%;
   padding: 30px 0px;
-  border: solid 2px green;
+  border: solid 2px #F7E09D;
+  background-color: #F1F1F5;
   font-size: 30px;
   font-family: Arial;
 }
-body #main ul {
+body main ul {
   margin: 0 auto;
   padding: 20px 0px;
   list-style-type: none;
 }
-body #main ul li {
+body main ul li {
+  border: solid 2px #F7E09D;
   font-size: large;
   font-family: Arial;
+  background-color: #F1F1F5;
 }/*# sourceMappingURL=app.css.map */

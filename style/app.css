@@ -33,6 +33,7 @@ body main p {
   font-family: Arial;
 }
 body main ul {
+  width: 50%;
   margin: 0 auto;
   padding: 20px 0px;
   list-style-type: none;

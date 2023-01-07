@@ -10,10 +10,7 @@ const categories = {
     笑い方が: ["」に近い"],
     悪魔の実の名前が: ["」に近い"]
 };
-const header = document.getElementById("header");
-const title = document.createElement("h1");
-const description = document.createElement("p");
-const main = document.getElementById("main");
+const main = document.getElementsByTagName("main")[0];
 const button = document.createElement("button");
 const subject = document.createElement("p");
 const subjectList = document.createElement("ul");
@@ -21,12 +18,8 @@ button.textContent = "お題を生成";
 button.className = "button";
 button.type = "button";
 subjectList.className = "subjectList";
-title.textContent = "VIVRE RUSH ランダムお題ジェネレータ";
-description.textContent = "1000種類以上のお題でVIVRE RUSHをもっと楽しくプレイしよう！！";
 window.onload = () => {
     document.body.appendChild(main);
-    header.appendChild(title);
-    header.appendChild(description);
     main.appendChild(button);
     main.appendChild(subject);
     main.appendChild(subjectList);
